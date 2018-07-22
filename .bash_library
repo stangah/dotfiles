@@ -1,0 +1,55 @@
+# .bash_library -*- Mode: Shell-script; -*-
+# This is where bash utility functions are placed.  Included from (at least)
+# .bash_profile and .bashrc and has include guards such that it can only
+# be included once.
+
+if [ "$BASH_LIBRARY" ]; then
+    # We've already loaded the library, so do nothing
+    : # NOP
+else
+    # Load the library
+
+    # This checks for given programs on the system
+    inpath()
+    {
+        type "$1" &> /dev/null
+    }
+
+    # mkdir, cd into it
+    mkcd () {
+        mkdir -p "$*"
+        cd "$*"
+    }
+
+    pathmunge /usr/local/sbin after
+    pathmunge /usr/local/heroku/bin
+    pathmunge /usr/local/mysql/bin
+    pathmunge /usr/local/go/bin
+    pathmunge "$HOME/bin"
+
+    # Turn on color for FreeBSD/Darwin ls
+    export CLICOLOR=yes
+    # Set FreeBSD/Darwin ls colors to be Solarize like
+    export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+
+    # Set colors for GNU ls
+    inpath dircolors && eval "$(dircolors -b "$HOME/.dircolorsrc")"
+
+    export GOPATH="$HOME/code/go"
+
+    export EDITOR="subl"
+
+    # Setup UTF-8 locale
+    # Note: in theory, checking for present locales is done via the `locale'
+    # command; however, I can't be bothered.
+    export LANG=en_US.UTF-8
+
+    # Default to use ssh for rsync
+    export RSYNC_RSH=ssh
+
+    pathmunge "$RBENV_ROOT/shims"
+    pathmunge "$PYENV_ROOT/shims"
+    pathmunge "$GOPATH/bin"
+
+    BASH_LIBRARY="yes"
+fi
