@@ -1,0 +1,12 @@
+[user]
+	email = pstanger@gmail.com
+	name = Patrick
+[core]
+	editor = vim
+[push]
+	default = simple
+[alias]
+	# remove files from index (tracking)
+	unstage = reset HEAD
+	# go back before last commit, with files in uncommitted state
+	uncommit = reset --soft HEAD^  

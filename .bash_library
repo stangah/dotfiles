@@ -32,6 +32,8 @@ else
 
     export GOPATH="$HOME/code/go"
 
+    export MYMOVE="$GOPATH/src/github.com/transcom/mymove"
+
     export EDITOR="subl"
 
     # Setup UTF-8 locale
