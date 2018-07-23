@@ -57,6 +57,8 @@ alias mysql='mysql -p'
 
 alias ni='npm install'
 
+alias ls='ls -GFh'
+
 # Shell Options
 
 # Append to the history file instead of destroying it every time.
@@ -82,6 +84,14 @@ HISTCONTROL=ignoreboth
 HISTIGNORE='ls:bg:fg:history'
 HISTTIMEFORMAT='%F %T '
 
+# export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+export PS1=" "
+
+# Turn on color for FreeBSD/Darwin ls
+export CLICOLOR=yes
+# Set FreeBSD/Darwin ls colors to be Solarize like
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+
 # Nodeenv
 inpath nodenv && eval "$(nodenv init -)"
 
@@ -90,4 +100,9 @@ inpath nodenv && eval "$(nodenv init -)"
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
 
 # Set up direnv
-eval "$(direnv hook bash)"
+if command -v direnv >/dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
+# Pyenv
+eval "$(pyenv init -)"

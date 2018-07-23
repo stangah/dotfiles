@@ -27,11 +27,6 @@ else
     pathmunge /usr/local/go/bin
     pathmunge "$HOME/bin"
 
-    # Turn on color for FreeBSD/Darwin ls
-    export CLICOLOR=yes
-    # Set FreeBSD/Darwin ls colors to be Solarize like
-    export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
-
     # Set colors for GNU ls
     inpath dircolors && eval "$(dircolors -b "$HOME/.dircolorsrc")"
 
