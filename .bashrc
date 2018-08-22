@@ -104,5 +104,8 @@ if command -v direnv >/dev/null; then
     eval "$(direnv hook bash)"
 fi
 
+# Increase limit for number of simultaneous files open (thanks dep.)
+ulimit -n 5000
+
 # Pyenv
 eval "$(pyenv init -)"
