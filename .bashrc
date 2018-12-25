@@ -84,8 +84,7 @@ HISTCONTROL=ignoreboth
 HISTIGNORE='ls:bg:fg:history'
 HISTTIMEFORMAT='%F %T '
 
-# export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-export PS1=" "
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 
 # Turn on color for FreeBSD/Darwin ls
 export CLICOLOR=yes
@@ -94,6 +93,9 @@ export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 # Nodeenv
 inpath nodenv && eval "$(nodenv init -)"
+
+# Pyenv
+inpath pyenv && eval "$(pyenv init -)"
 
 # Finally, source a .bashrc.local for site specific crap.
 # shellcheck source=/dev/null
@@ -106,6 +108,3 @@ fi
 
 # Increase limit for number of simultaneous files open (thanks dep.)
 ulimit -n 5000
-
-# Pyenv
-eval "$(pyenv init -)"

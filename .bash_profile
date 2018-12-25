@@ -1,15 +1,12 @@
-# .bash_profile -*- Mode: Shell-script; -*-
-
-# Load .bashrc at login also.
-# shellcheck source=.bashrc
-[[ -f "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
+#!/usr/bin/env bash
 
 # Path to the bash it configuration
 export BASH_IT="/Users/patrick/.bash_it"
 
-# Lock and Load a custom theme file
+# Lock and Load a custom theme file.
+# Leave empty to disable theming.
 # location /.bash_it/themes/
-# export BASH_IT_THEME='bobby'
+# export BASH_IT_THEME='simple'
 
 # (Advanced): Change this to the name of your remote repo if you
 # cloned bash-it with a remote other than origin such as `bash-it`.
@@ -29,8 +26,6 @@ export TODO="t"
 
 # Set this to false to turn off version control status checking within the prompt for all themes
 export SCM_CHECK=true
-
-export PS1="\u@\h\w $ "
 
 # Set Xterm/screen/Tmux title with only a short hostname.
 # Uncomment this (or set SHORT_HOSTNAME to something else),
@@ -56,6 +51,8 @@ export PS1="\u@\h\w $ "
 
 # Uncomment this to make Bash-it create alias reload.
 # export BASH_IT_RELOAD_LEGACY=1
+
+[[ -s ~/.bashrc ]] && source ~/.bashrc
 
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
